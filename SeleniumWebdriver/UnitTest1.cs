@@ -13,7 +13,7 @@ namespace SeleniumWebdriver
         [TestMethod]
         public void TestMethod1()
         {
-            IWebDriver driver = new FirefoxDriver();
+            IWebDriver driver = new ChromeDriver();
             driver.Navigate().GoToUrl("http://localhost:5001/"); // this will open the web page
             driver.Close(); //this will close the browser session
             driver.Quit(); // this will stop the webdriver
