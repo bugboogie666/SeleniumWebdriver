@@ -25,6 +25,7 @@ namespace SeleniumWebdriver.Configuration
 
         public string GetUsername()
         {
+            
             return ConfigurationManager.AppSettings.Get(AppConfigKeys.Username);
         }
 
