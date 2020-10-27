@@ -1,7 +1,10 @@
 ﻿using Microsoft.Dynamics365.UIAutomation.Api;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using SeleniumWebdriver.Configuration;
+using SeleniumWebdriver.Settings;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -11,22 +14,18 @@ using System.Threading.Tasks;
 
 namespace SeleniumWebdriver.BaseClasses
 {
+    [TestClass]
     public class BaseClass
     {
-        private static IWebDriver GetFirefoxDriver()
+        [AssemblyInitialize]
+        public static void InitDriver(TestContext tc)
         {
-            return new FirefoxDriver();
+            ObjectRepository.Config = new AppConfigReader();
+
+            ObjectRepository.XrmBrowser = new Browser(ObjectRepository.Config.GetBrowser());
+            
         }
 
-        private static IWebDriver GetChromeDriver()
-        {
-            return new ChromeDriver();
-        }
-
-        private static Browser GetXrmBrowser()
-        {
-            throw new NotImplementedException();
-        }
 
        
 

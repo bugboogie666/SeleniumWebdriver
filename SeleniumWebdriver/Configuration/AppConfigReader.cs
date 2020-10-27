@@ -1,4 +1,5 @@
-﻿using SeleniumWebdriver.Interfaces;
+﻿using Microsoft.Dynamics365.UIAutomation.Browser;
+using SeleniumWebdriver.Interfaces;
 using SeleniumWebdriver.Settings;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,10 @@ namespace SeleniumWebdriver.Configuration
             return ConfigurationManager.AppSettings.Get(AppConfigKeys.Username);
         }
 
-
+        public string GetWebsite()
+        {
+            return ConfigurationManager.AppSettings.Get(AppConfigKeys.Website);
+            
+        }
     }
 }

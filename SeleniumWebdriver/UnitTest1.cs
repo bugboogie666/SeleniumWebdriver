@@ -17,15 +17,8 @@ namespace SeleniumWebdriver
         [TestMethod]
         public void TestMethod1()
         {
-            IWebDriver driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("http://automationpractice.com/index.php"); // this will open the web page
-            driver.Close(); //this will close the browser session
-            driver.Quit(); // this will stop the webdriver
 
-            IConfig configReader = new AppConfigReader();
-
-            configReader.GetBrowser();
-            
+           
            
         }
     }

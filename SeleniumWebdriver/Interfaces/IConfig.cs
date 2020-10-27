@@ -1,4 +1,5 @@
-﻿using SeleniumWebdriver.Configuration;
+﻿using Microsoft.Dynamics365.UIAutomation.Browser;
+using SeleniumWebdriver.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,9 @@ namespace SeleniumWebdriver.Interfaces
         string GetUsername();
         string GetPassword();
         BrowserType GetBrowser();
+        string GetWebsite();
+
+
+
     }
 }
