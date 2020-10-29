@@ -1,4 +1,5 @@
 ﻿using Microsoft.Dynamics365.UIAutomation.Api;
+using Microsoft.Dynamics365.UIAutomation.Api.UCI;
 using Microsoft.Dynamics365.UIAutomation.Browser;
 using OpenQA.Selenium;
 using SeleniumWebdriver.Configuration;
@@ -18,7 +19,7 @@ namespace SeleniumWebdriver.Settings
         public static IConfig FromEnviron { get; set; }
 
         public static Browser XrmBrowser { get; set; }
-
+        public static XrmApp XrmApp { get; set; }
         public static BrowserOptions BrowserAdvancedSettings => TestSettings.Options;
     }
 }

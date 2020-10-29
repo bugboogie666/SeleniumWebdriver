@@ -26,8 +26,9 @@ namespace SeleniumWebdriver.TestScript.PageNavigation
             var url = ObjectRepository.FromAppConfig.GetCrmUrl();
             var password = ObjectRepository.FromEnviron.GetCrmPassword();
             var username = ObjectRepository.FromEnviron.GetCrmUsername();
-            var browser = ObjectRepository.XrmBrowser;          
+            var browser = ObjectRepository.XrmBrowser;
 
+            /**
             browser.LoginPage.Login(url, username, password); 
                         
             browser.ThinkTime(500);
@@ -37,7 +38,15 @@ namespace SeleniumWebdriver.TestScript.PageNavigation
             browser.Navigation.SignOut();
 
             //var areas = browser.Navigation.GetAreas();     
-
+            **/
+            var app = ObjectRepository.XrmApp;
+            app.OnlineLogin.Login(url, username, password);
+            app.Navigation.OpenApp("Kentico CRM App");
+            app.Navigation.OpenSubArea("Sales", "Leads");
+            app.ThinkTime(1000);
+            app.Navigation.OpenAbout();
+            //app.Navigation.SignOut();
+            
 
         }
         public static void ADFSLoginAction(LoginRedirectEventArgs args)
