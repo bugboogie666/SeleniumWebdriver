@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,23 @@ namespace SeleniumWebdriver.Configuration
             var browser =  ConfigurationManager.AppSettings.Get(AppConfigKeys.Browser);
 
             return (BrowserType)Enum.Parse(typeof(BrowserType), browser);
+        }
+
+        public SecureString GetCrmPassword()
+        {
+            var crmPassword = Environment.GetEnvironmentVariable(AppConfigKeys.CrmPassword,EnvironmentVariableTarget.User);
+            //return ConfigurationManager.AppSettings.Get(AppConfigKeys.CrmPassword).ToSecureString();
+            return crmPassword.ToSecureString();
+        }
+
+        public Uri GetCrmUrl()
+        {
+            return new Uri(ConfigurationManager.AppSettings.Get(AppConfigKeys.OnlineCrmUrl));
+        }
+
+        public SecureString GetCrmUsername()
+        {
+            return ConfigurationManager.AppSettings.Get(AppConfigKeys.CrmUsername).ToSecureString();
         }
 
         public string GetPassword()

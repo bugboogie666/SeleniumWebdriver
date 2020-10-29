@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.DevTools.Page;
 using OpenQA.Selenium.Firefox;
 using SeleniumWebdriver.Configuration;
 using SeleniumWebdriver.Settings;
@@ -17,13 +18,26 @@ namespace SeleniumWebdriver.BaseClasses
     [TestClass]
     public class BaseClass
     {
-        [AssemblyInitialize]
+        /**[AssemblyInitialize]
         public static void InitDriver(TestContext tc)
         {
-            ObjectRepository.Config = new AppConfigReader();
+            ObjectRepository.FromAppConfig = new AppConfigReader();
+            ObjectRepository.FromEnviron = new EnvironmentVariablesReader();
 
-            ObjectRepository.XrmBrowser = new Browser(ObjectRepository.Config.GetBrowser());
+            ObjectRepository.XrmBrowser = new Browser(ObjectRepository.FromAppConfig.GetBrowser());
+        }**/
             
+            
+        
+        [AssemblyInitialize]
+        public static void InitDriverWithAdvancedSettings(TestContext tc)
+        {
+            ObjectRepository.FromAppConfig = new AppConfigReader();
+            ObjectRepository.FromEnviron = new EnvironmentVariablesReader();
+            
+
+            ObjectRepository.XrmBrowser = new Browser(ObjectRepository.BrowserAdvancedSettings);
+
         }
 
 

@@ -87,11 +87,12 @@
   <ItemGroup>
     <Compile Include="BaseClasses\BaseClass.cs" />
     <Compile Include="Configuration\AppConfigReader.cs" />
+    <Compile Include="Configuration\EnvironmentVariablesReader.cs" />
+    <Compile Include="Configuration\TestSettings.cs" />
     <Compile Include="Interfaces\IConfig.cs" />
     <Compile Include="Settings\AppConfigKeys.cs" />
     <Compile Include="Settings\ObjectRepository.cs" />
     <Compile Include="TestScript\PageNavigation\TestPageNavigation.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
