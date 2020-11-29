@@ -6,6 +6,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.DevTools.Page;
 using OpenQA.Selenium.Firefox;
 using SeleniumWebdriver.Configuration;
+using SeleniumWebdriver.CustomException;
 using SeleniumWebdriver.Settings;
 using System;
 using System.Collections.Generic;
@@ -35,12 +36,21 @@ namespace SeleniumWebdriver.BaseClasses
         {
             ObjectRepository.FromAppConfig = new AppConfigReader();
             ObjectRepository.FromEnviron = new EnvironmentVariablesReader();
-            
 
-            ObjectRepository.XrmBrowser = new Browser(ObjectRepository.BrowserAdvancedSettings);
+            try
+            {
+                ObjectRepository.XrmBrowser = new Browser(ObjectRepository.BrowserAdvancedSettings);
 
-            var client = new WebClient(ObjectRepository.BrowserAdvancedSettings);
-            ObjectRepository.XrmApp = new XrmApp(client);
+                var client = new WebClient(ObjectRepository.BrowserAdvancedSettings);
+                ObjectRepository.XrmApp = new XrmApp(client);
+
+            }
+            catch (Exception)
+            {
+                throw new NoSuitableDriverFound($"No such browser: {ObjectRepository.BrowserAdvancedSettings.BrowserType}");
+            }
+
+
         }
 
 

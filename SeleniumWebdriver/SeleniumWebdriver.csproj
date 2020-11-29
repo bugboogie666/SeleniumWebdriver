@@ -89,6 +89,7 @@
     <Compile Include="Configuration\AppConfigReader.cs" />
     <Compile Include="Configuration\EnvironmentVariablesReader.cs" />
     <Compile Include="Configuration\TestSettings.cs" />
+    <Compile Include="CustomException\NoSuitableDriverFound.cs" />
     <Compile Include="Interfaces\IConfig.cs" />
     <Compile Include="Settings\AppConfigKeys.cs" />
     <Compile Include="Settings\ObjectRepository.cs" />
@@ -97,7 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ComponentHelper\" />
-    <Folder Include="CustomException\" />
     <Folder Include="ExcelReader\" />
     <Folder Include="PageObject\" />
   </ItemGroup>
