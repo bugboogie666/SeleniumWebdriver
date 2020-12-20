@@ -4,6 +4,7 @@ using Microsoft.Dynamics365.UIAutomation.Browser;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using SeleniumWebdriver.BaseClasses;
+using SeleniumWebdriver.ComponentHelper;
 using SeleniumWebdriver.Settings;
 
 namespace SeleniumWebdriver.TestScript.PageNavigation
@@ -14,9 +15,8 @@ namespace SeleniumWebdriver.TestScript.PageNavigation
     
         [TestMethod]
         public void OpenAPage()
-        {
-            var page = ObjectRepository.XrmBrowser.Driver.Navigate();
-            page.GoToUrl(ObjectRepository.FromAppConfig.GetWebsite());
+        {            
+            NavigationHelper.NavigateTo(ObjectRepository.FromAppConfig.GetWebsite());
             ObjectRepository.XrmBrowser.Driver.Close();
         }
 
@@ -39,12 +39,14 @@ namespace SeleniumWebdriver.TestScript.PageNavigation
 
             //var areas = browser.Navigation.GetAreas();     
             **/
-            var app = ObjectRepository.XrmApp;
-            app.OnlineLogin.Login(url, username, password);
-            app.Navigation.OpenApp("Kentico CRM App");
-            app.Navigation.OpenSubArea("Sales", "Leads");
-            app.ThinkTime(1000);
-            app.Navigation.OpenAbout();
+            
+            //app.OnlineLogin.Login(url, username, password);
+            //app.Navigation.OpenApp("Kentico CRM App");
+            NavigationHelper.LoginAndOpenDynamicsApp("Kentico CRM App", url, username, password);
+            //app.Navigation.OpenSubArea("Sales", "Leads");
+            //app.ThinkTime(1000);
+            NavigationHelper.NavigateToSubarea("Sales", "Leads");
+            ObjectRepository.XrmApp.Navigation.OpenAbout();
             //app.Navigation.SignOut();
             
 
