@@ -26,5 +26,13 @@ namespace SeleniumWebdriver.ComponentHelper
             ObjectRepository.XrmApp.Navigation.OpenSubArea(area, subarea);
             ObjectRepository.XrmApp.ThinkTime(1000);
         }
+
+        public static void SignOut()
+        {
+            ObjectRepository.XrmApp.Navigation.SignOut();
+            //ObjectRepository.XrmApp.Navigation.OpenAbout();
+        }
+
+        
     }
 }
