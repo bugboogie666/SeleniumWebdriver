@@ -21,5 +21,7 @@ namespace SeleniumWebdriver.Settings
         public static Browser XrmBrowser { get; set; }
         public static XrmApp XrmApp { get; set; }
         public static BrowserOptions BrowserAdvancedSettings => TestSettings.Options;
+
+        public static IWebDriver WebDriver { get; set; }
     }
 }

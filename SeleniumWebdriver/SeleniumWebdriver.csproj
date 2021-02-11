@@ -92,14 +92,16 @@
     <Compile Include="Configuration\TestSettings.cs" />
     <Compile Include="CustomException\NoSuitableDriverFound.cs" />
     <Compile Include="Interfaces\IConfig.cs" />
+    <Compile Include="PageObject\OrderPage.cs" />
+    <Compile Include="PageObject\ProductPage.cs" />
     <Compile Include="Settings\AppConfigKeys.cs" />
     <Compile Include="Settings\ObjectRepository.cs" />
+    <Compile Include="PageObject\OrdersPage.cs" />
     <Compile Include="TestScript\PageNavigation\TestPageNavigation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ExcelReader\" />
-    <Folder Include="PageObject\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

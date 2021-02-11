@@ -10,9 +10,9 @@ namespace SeleniumWebdriver.ComponentHelper
 {
     public class NavigationHelper
     {
-        public static void NavigateTo(string url)
+        public static void NavigateToUrl(string url)
         {
-            ObjectRepository.XrmBrowser.Driver.Navigate().GoToUrl(url);
+            ObjectRepository.WebDriver.Navigate().GoToUrl(url);
         }
 
         public static void LoginAndOpenDynamicsApp(string appName, Uri url, SecureString username, SecureString password)
@@ -30,6 +30,8 @@ namespace SeleniumWebdriver.ComponentHelper
         public static void SignOut()
         {
             ObjectRepository.XrmApp.Navigation.SignOut();
+            ObjectRepository.XrmApp.ThinkTime(5000);
+            ObjectRepository.WebDriver.Close();
             //ObjectRepository.XrmApp.Navigation.OpenAbout();
         }
 
