@@ -32,7 +32,6 @@ namespace SeleniumWebdriver.ComponentHelper
             ObjectRepository.XrmApp.Navigation.SignOut();
             ObjectRepository.XrmApp.ThinkTime(5000);
             ObjectRepository.WebDriver.Close();
-            //ObjectRepository.XrmApp.Navigation.OpenAbout();
         }
 
         

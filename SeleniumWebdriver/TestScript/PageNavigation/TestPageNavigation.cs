@@ -69,11 +69,13 @@ namespace SeleniumWebdriver.TestScript.PageNavigation
             //Login
             NavigationHelper.LoginAndOpenDynamicsApp("Kentico CRM App", url, username, password);
             //Create order
-            OrdersPage ordersPage = new OrdersPage();
+            OrdersPage ordersPage = new OrdersPage();            
             ordersPage.Open();
-            OrderPage order = ordersPage.CreateOrder();
-            order.FillForm();
-            order.Save();
+            OrderPage order = ordersPage.CreateOrder();            
+            order.Fill("Name", "newmethod");
+            order.Fill("Purchaser", "Test 2");
+            order.Fill("Moved From", "Perpetual");
+            //order.Save();
             //var product = order.AddProduct("Maintenace Renewal");
             //product.SetPrice(10000);            
 
