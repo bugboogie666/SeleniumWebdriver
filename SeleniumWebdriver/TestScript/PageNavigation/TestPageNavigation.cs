@@ -60,7 +60,7 @@ namespace SeleniumWebdriver.TestScript.PageNavigation
             //NavigationHelper.SignOut();
         }
         [TestMethod]
-        public void ReinstatementShouldBeCreatedWhenOrderIsPaid3DaysAfterRenewalStarted()
+        public void TestCreateOrder()
         {
             var url = ObjectRepository.FromAppConfig.GetCrmUrl();
             var password = ObjectRepository.FromEnviron.GetCrmPassword();
@@ -72,13 +72,26 @@ namespace SeleniumWebdriver.TestScript.PageNavigation
             OrdersPage ordersPage = new OrdersPage();            
             ordersPage.Open();
             OrderPage order = ordersPage.CreateOrder();            
-            order.Fill("Name", "newmethod");
+            order.Fill("Name", "TestSeleniumCreateOrderWithProduct");
             order.Fill("Purchaser", "Test 2");
             order.Fill("Moved From", "Perpetual");
-            //order.Save();
-            //var product = order.AddProduct("Maintenace Renewal");
-            //product.SetPrice(10000);            
+            order.Fill("Customer", "Test 2");
+            order.Fill("Price List", "Kentico USD - 2020/07/01");
+            order.Fill("Billing Office", "Kentico Software Ltd - UK Office");
+            order.Fill("Delivery Contact", "jan");
+            order.Save();
+            //Add product to order
+            var product = order.AddProduct();
+            product.Fill("Existing Product", "Business - 1 Website Auto-Scalable License");
+            ObjectRepository.XrmApp.ThinkTime(2000);
+            product.Fill("Pricing", "false");            
+            order = product.SaveAndClose();
+            var orderId = order.GetRecordId();            
+            //order.Fill("Name", "TestSeleniumCreateOrderWith");
+            ordersPage = order.SaveAndClose();
+            Assert.IsTrue(ordersPage.RecordExists(order, orderId),"Order hasn´t been created.");
 
+            
         }
   
     }

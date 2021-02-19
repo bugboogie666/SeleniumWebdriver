@@ -17,8 +17,7 @@ namespace SeleniumWebdriver.Settings
         public static IConfig FromAppConfig { get; set; }
 
         public static IConfig FromEnviron { get; set; }
-
-        public static Browser XrmBrowser { get; set; }
+                
         public static XrmApp XrmApp { get; set; }
         public static BrowserOptions BrowserAdvancedSettings => TestSettings.Options;
 

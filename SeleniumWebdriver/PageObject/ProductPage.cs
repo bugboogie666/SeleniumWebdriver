@@ -1,5 +1,6 @@
 ﻿using Microsoft.Dynamics365.UIAutomation.Api.UCI;
 using SeleniumWebdriver.ComponentHelper;
+using SeleniumWebdriver.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,19 +11,21 @@ namespace SeleniumWebdriver.PageObject
 {
     internal class ProductPage: PageObjectHelper
     {
-        public string ProductName { get; set; }
-
+                       
         public LookupItem ExistingProduct => new LookupItem { Name = "productid" };
-        public ProductPage(string productName=null)
+        public BooleanItem Pricing => new BooleanItem { Name = "ispriceoverridden" };
+        
+        public ProductPage()
         {
             var factory = new MappingsFactory();
-            LabelToFieldMappings = factory.Create(this);
-            ProductName = productName;
-        }
+            LabelToFieldMappings = factory.Create(this);            
+        }   
 
-        internal void SetPrice(decimal price)
-        {
-            throw new NotImplementedException();
+        internal OrderPage SaveAndClose()
+        {            
+            ObjectRepository.XrmApp.CommandBar.ClickCommand("Save & Close");            
+            return new OrderPage();
+            
         }
     }
 }

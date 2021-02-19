@@ -1,5 +1,6 @@
 ﻿using Microsoft.Dynamics365.UIAutomation.Api.UCI;
 using SeleniumWebdriver.ComponentHelper;
+using SeleniumWebdriver.Pageobject;
 using SeleniumWebdriver.Settings;
 using System;
 using System.Collections.Generic;
@@ -28,16 +29,26 @@ namespace SeleniumWebdriver.PageObject
             LabelToFieldMappings = factory.Create(this);
         }
 
-        internal ProductPage AddProduct(string productName)
+        internal string GetName()
         {
-            ObjectRepository.XrmApp.Entity.SubGrid.ClickCommand(SalesOrderDetailsGrid, "Add Product");
-            return new ProductPage(productName);
+            return ObjectRepository.XrmApp.Entity.GetValue(Name);
         }
 
+        internal ProductPage AddProduct()
+        {
+            ObjectRepository.XrmApp.Entity.SubGrid.ClickCommand(SalesOrderDetailsGrid, "Add Product");
+            return new ProductPage();
+        }
+        internal OrdersPage SaveAndClose()
+        {
+            //ObjectRepository.XrmApp.ThinkTime(5000);
+            ObjectRepository.XrmApp.CommandBar.ClickCommand("Save & Close");
+            return new OrdersPage();
+        }
 
-
-
-
-
+        internal Guid GetRecordId()
+        {
+            return ObjectRepository.XrmApp.Entity.GetObjectId();
+        }
     }
 }

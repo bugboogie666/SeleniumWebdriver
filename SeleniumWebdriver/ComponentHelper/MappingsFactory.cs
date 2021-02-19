@@ -36,7 +36,8 @@ namespace SeleniumWebdriver.ComponentHelper
                 return new Dictionary<string, object>
                 {
                 //product entity
-                    {"Existing Product", productPage.ExistingProduct}
+                    {"Existing Product", productPage.ExistingProduct},
+                    {"Pricing", productPage.Pricing}
                 };
 
             }

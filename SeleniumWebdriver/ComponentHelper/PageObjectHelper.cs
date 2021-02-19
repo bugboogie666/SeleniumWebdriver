@@ -33,6 +33,11 @@ namespace SeleniumWebdriver.ComponentHelper
                 var fieldRetyped = toResolve as LookupItem;
                 ObjectRepository.XrmApp.Entity.SetValue(new LookupItem { Name = fieldRetyped.Name, Value = value.ToString(), Index = index });
             }
+            else if (fieldType.Equals(typeof(BooleanItem)))
+            {
+                var fieldRetyped = toResolve as BooleanItem;                
+                ObjectRepository.XrmApp.Entity.SetValue(new BooleanItem { Name = fieldRetyped.Name, Value = Convert.ToBoolean(value) });
+            }
             else
                 throw new TypeLoadException();
         }
@@ -44,6 +49,7 @@ namespace SeleniumWebdriver.ComponentHelper
                 if (element.Key.Equals(label))
                 {
                     result = element.Value;
+                    break;
                 }
             }
             return result;
@@ -59,6 +65,9 @@ namespace SeleniumWebdriver.ComponentHelper
         {
             ObjectRepository.XrmApp.CommandBar.ClickCommand("Save");
         }
+
+
+
 
     }
 }

@@ -1,7 +1,9 @@
-﻿using SeleniumWebdriver.ComponentHelper;
+﻿using Microsoft.Dynamics365.UIAutomation.Api.UCI;
+using SeleniumWebdriver.ComponentHelper;
 using SeleniumWebdriver.PageObject;
 using SeleniumWebdriver.Settings;
 using System;
+using System.Collections.Generic;
 
 namespace SeleniumWebdriver.Pageobject
 {
@@ -19,8 +21,15 @@ namespace SeleniumWebdriver.Pageobject
         internal OrderPage CreateOrder()
         {
             ObjectRepository.XrmApp.CommandBar.ClickCommand("New");
-            return new OrderPage();
-            
+            return new OrderPage();            
         }
+
+        internal bool RecordExists(OrderPage order, Guid id)
+        {
+            ObjectRepository.XrmApp.Grid.OpenRecord(0);
+            //return order.GetName().Equals(orderName);
+            return order.GetRecordId().Equals(id);
+        }
+    
     }
 }
