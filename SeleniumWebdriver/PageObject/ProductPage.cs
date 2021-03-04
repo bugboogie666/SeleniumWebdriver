@@ -14,7 +14,8 @@ namespace SeleniumWebdriver.PageObject
                        
         public LookupItem ExistingProduct => new LookupItem { Name = "productid" };
         public BooleanItem Pricing => new BooleanItem { Name = "ispriceoverridden" };
-        
+        public string Quantity => "ken_quantity";
+
         public ProductPage()
         {
             var factory = new MappingsFactory();

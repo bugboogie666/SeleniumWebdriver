@@ -26,7 +26,8 @@ namespace SeleniumWebdriver.ComponentHelper
                     {"Price List", orderPage.PriceLevel},
                     {"Purchaser",  orderPage.Purchaser},
                     {"Customer",  orderPage.Customer },
-                    {"Delivery Contact", orderPage.DeliveryContact}
+                    {"Delivery Contact", orderPage.DeliveryContact},
+                    {"Status Reason", orderPage.StatusReason}
 
                 };
             }
@@ -37,7 +38,8 @@ namespace SeleniumWebdriver.ComponentHelper
                 {
                 //product entity
                     {"Existing Product", productPage.ExistingProduct},
-                    {"Pricing", productPage.Pricing}
+                    {"Pricing", productPage.Pricing},
+                    {"Quantity", productPage.Quantity}
                 };
 
             }

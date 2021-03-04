@@ -38,12 +38,16 @@ namespace SeleniumWebdriver.Configuration
 
         public string GetPassword()
         {
-            throw new NotImplementedException();
+            var crmPassword = Environment.GetEnvironmentVariable(AppConfigKeys.CrmPassword, EnvironmentVariableTarget.User);
+
+            return crmPassword;
         }
 
         public string GetUsername()
         {
-            throw new NotImplementedException();
+            var crmUsername = Environment.GetEnvironmentVariable(AppConfigKeys.CrmUsername, EnvironmentVariableTarget.User);
+
+            return crmUsername;
         }
 
         public string GetWebsite()

@@ -20,6 +20,7 @@ namespace SeleniumWebdriver.Pageobject
 
         internal OrderPage CreateOrder()
         {
+            var commands = ObjectRepository.XrmApp.CommandBar.GetCommandValues();
             ObjectRepository.XrmApp.CommandBar.ClickCommand("New");
             return new OrderPage();            
         }

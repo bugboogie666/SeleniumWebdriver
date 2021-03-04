@@ -2,6 +2,7 @@
 using SeleniumWebdriver.ComponentHelper;
 using SeleniumWebdriver.Pageobject;
 using SeleniumWebdriver.Settings;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace SeleniumWebdriver.PageObject
         public LookupItem Customer => new LookupItem { Name = "customerid" };
         public LookupItem DeliveryContact => new LookupItem { Name = "ken_deliverycontact" };
         public string SalesOrderDetailsGrid => "salesorderdetailsGrid";
+        public OptionSet StatusReason => new OptionSet { Name = "statuscode"};
+        public IWebElement ExpandIcon => ObjectRepository.WebDriver.FindElement(By.Id("expandIcon"));
 
         public OrderPage()
         {
@@ -49,6 +52,12 @@ namespace SeleniumWebdriver.PageObject
         internal Guid GetRecordId()
         {
             return ObjectRepository.XrmApp.Entity.GetObjectId();
+        }
+
+        internal void SwitchStatusReason(string statusReason)
+        {
+            ExpandIcon.Click();
+            Fill("Status Reason",statusReason);
         }
     }
 }
